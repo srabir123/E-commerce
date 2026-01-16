@@ -1,10 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const Product = require("../models/product.model");
-
-// --------------------
 // Add Product
-// --------------------
 router.post("/", async (req, res) => {
   try {
     const product = new Product(req.body);
@@ -14,10 +11,7 @@ router.post("/", async (req, res) => {
     res.status(400).json({ error: err.message });
   }
 });
-
-// --------------------
 // Get All Products (WITH QUERY)
-// --------------------
 router.get("/", async (req, res) => {
   try {
     const {
@@ -68,10 +62,7 @@ router.get("/", async (req, res) => {
     res.status(500).json({ error: err.message });
   }
 });
-
-// --------------------
 // Get Single Product by ID
-// --------------------
 router.get("/:id", async (req, res) => {
   try {
     const product = await Product.findById(req.params.id);
